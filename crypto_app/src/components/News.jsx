@@ -11,10 +11,9 @@ const { Option } = Select;
 const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 
-
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
-  const {data} = useGetCryptosQuery(100);
+  const {data} = useGetCryptosQuery(100);  // All cryptos are called to handle search select menu.
   const { data: cryptoNews } = useGetCryptosNewsQuery({
     newsCategory,
     count: simplified ? 6 : 12,
@@ -56,7 +55,7 @@ const News = ({ simplified }) => {
                   <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl  || demoImage } alt='news' />
                   <Text className="provider-name">{news.provider[0]?.name}</Text>
                 </div>
-                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                <Text> {moment(news.datePublished).startOf('ss').fromNow()}</Text>
               </div>
             </a>
           </Card>
